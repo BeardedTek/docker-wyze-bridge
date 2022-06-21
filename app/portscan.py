@@ -6,6 +6,7 @@ import re
 import os
 import time
 import json
+import sys
 try:
     from queue import Queue
 except ImportError:
@@ -99,7 +100,9 @@ class PortScan:
             else:
                 time.sleep(0.01)
         return
-
+    def exit(self):
+        sys.exit()
+        
     def run(self):
         # Generator that contains all ip:port pairs.
         self.gen = ((ip, port) for ip in self.ip_range for port in self.ports)
